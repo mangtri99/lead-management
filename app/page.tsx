@@ -1,5 +1,5 @@
+import LayoutDashboard from "@/components/LayoutDashboard";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Lead Management",
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <div>
+    <LayoutDashboard>
       <div>MAIN</div>
-    </div>
+    </LayoutDashboard>
   );
 }
