@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useMedia } from "react-use";
 import Sidebar from "@/components/Sidebar";
-import { Card } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useRouter } from "next/navigation";
 
 export default function LayoutDashboard({
   children,
@@ -21,6 +21,7 @@ export default function LayoutDashboard({
 }) {
   const isMobile = useMedia("(max-width: 576px)");
   const [collapsed, setCollapsed] = useState(isMobile ? true : false);
+  const router = useRouter();
   return (
     <div className="min-h-screen w-full">
       {/* Sidebar */}
@@ -60,7 +61,9 @@ export default function LayoutDashboard({
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuLabel>Logout</DropdownMenuLabel>
+                <DropdownMenuLabel onClick={() => router.push("/login")}>
+                  Logout
+                </DropdownMenuLabel>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
