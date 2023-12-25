@@ -24,6 +24,7 @@ async function getData(
 
   const { data } = await http(url, {
     method: "GET",
+    cache: "no-store",
   });
   return data;
 }

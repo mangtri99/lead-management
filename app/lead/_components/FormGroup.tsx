@@ -25,7 +25,8 @@ import { Home, Info } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import useFormLead from "../_states/form";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 
 async function getOptions(params?: string): Promise<any> {
   const { data: branch } = await http("/branch");
@@ -51,8 +52,10 @@ async function getOptions(params?: string): Promise<any> {
 
 export default function FormGroup() {
   const params = useParams();
+  const router = useRouter();
   const [options, setOptions] = useState<any>({});
   const { form, schema } = useFormLead();
+  const { toast } = useToast();
 
   useMemo(async () => {
     const data = await getOptions();
@@ -94,12 +97,37 @@ export default function FormGroup() {
 
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof schema>) {
-    const res = await http(`/lead/${params.id}`, {
-      method: "PUT",
+    let url = "/lead";
+    if (params.id) {
+      url = `/lead/${params.id}`;
+    }
+    const { data, isError } = await http(url, {
+      method: params.id ? "PUT" : "POST",
       body: JSON.stringify(values),
     });
 
-    console.log(res);
+    if (isError) {
+      toast({
+        title: "Error",
+        description: "Something went wrong",
+        variant: "destructive",
+      });
+      if (data.errors) {
+        Object.keys(data.errors).forEach((key: any) => {
+          form.setError(key, {
+            type: "manual",
+            message: data.errors[key][0],
+          });
+        });
+      }
+    } else {
+      toast({
+        title: "Success",
+        description: params.id ? "Lead updated" : "Lead created",
+      });
+
+      router.push("/lead");
+    }
   }
 
   return (
