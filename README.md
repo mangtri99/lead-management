@@ -24,6 +24,9 @@ Dashboard: `/`
 
 Lead Management: `/lead/*`
 
-Note: You may need to define your base url API, please change .env on key `NEXT_PUBLIC_API_BASE_URL`
+Note: 
+
+- For login page, you can type any email and password as long as valid email and password
+- You may need to define your base url API, please change .env on key `NEXT_PUBLIC_API_BASE_URL`
 
 default : `NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api`
