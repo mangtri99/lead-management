@@ -16,6 +16,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
+import { Metadata } from "next";
 
 async function getData(
   params?: string
@@ -28,6 +29,11 @@ async function getData(
   });
   return data;
 }
+
+export const metadata: Metadata = {
+  title: "List of Leads",
+  description: "List of Leads",
+};
 
 export default async function Page(ctx: any) {
   // convert object to string

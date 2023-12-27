@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { Option } from "@/lib/types";
 import http from "@/lib/http";
-import { useMemo, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -29,39 +28,15 @@ import { useParams, useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import Required from "@/components/ui/required";
 
-async function getOptions(params?: string): Promise<any> {
-  const { data: branch } = await http("/branch");
-  const { data: status } = await http("/status");
-  const { data: probability } = await http("/probability");
-  const { data: type } = await http("/type");
-  const { data: channel } = await http("/channel");
-  const { data: media } = await http("/media");
-  const { data: source } = await http("/source");
-
-  const data = {
-    branch: branch.data,
-    status: status.data,
-    probability: probability.data,
-    type: type.data,
-    channel: channel.data,
-    media: media.data,
-    source: source.data,
-  };
-
-  return data;
+interface Props {
+  options: any;
 }
 
-export default function FormGroup() {
+export default function FormGroup({options}: Props) {
   const params = useParams();
   const router = useRouter();
-  const [options, setOptions] = useState<any>({});
   const { form, schema } = useFormLead();
   const { toast } = useToast();
-
-  useMemo(async () => {
-    const data = await getOptions();
-    setOptions(data);
-  }, []);
 
   function onChannelChange(val: number) {
     const getMedia = options?.channel?.find(
