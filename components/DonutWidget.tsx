@@ -16,15 +16,18 @@ function DonutWidget(props: Props) {
   const config: ApexOptions = {
     series: series,
     labels: labels,
+    dataLabels: {
+      enabled: false,
+    },
     responsive: [
       {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: '100%',
           },
           legend: {
-            position: "bottom",
+            show: true
           },
         },
       },
@@ -32,17 +35,15 @@ function DonutWidget(props: Props) {
     legend: {
       position: "right",
       offsetY: 0,
-      height: 230,
     },
-    chart: {
-      type: "donut",
-      height: 350,
+    noData: {
+      text: "No data",
     },
   };
   return (
     <Card className="p-4">
       <p className="text-sm text-gray-700 mb-4">{title}</p>
-      <ReactApexChart options={config} series={config.series} type="donut" />
+      <ReactApexChart options={config} series={config.series} type="donut"  />
     </Card>
   );
 }

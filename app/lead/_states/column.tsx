@@ -44,12 +44,14 @@ const ActionComponent = ({ row }: { row: any }) => {
     });
 
     if (isError) {
+      // if failed, show error toast
       toast({
         title: "Error",
         description: data.message,
         variant: "destructive",
       });
     } else {
+      // if success, show success toast and refresh table
       toast({
         title: "Success",
         description: "Lead deleted successfully",

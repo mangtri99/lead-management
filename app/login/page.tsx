@@ -22,7 +22,7 @@ export default function Page() {
   // Define a submit handler.
   function onSubmit(values: z.infer<typeof schema>) {
     console.log(values);
-    router.push("/lead");
+    router.push("/");
   }
 
   return (

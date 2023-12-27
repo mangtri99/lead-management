@@ -54,7 +54,7 @@ export default function useFormLead() {
       .refine((val) => val !== null, { message: "Channel is required" }),
     media_id: z.number().nullable(),
     source_id: z.number().nullable(),
-    notes: z.string().nullable(),
+    notes: z.string().nullish(),
   });
 
   const [defaultValues, setDefaultValues] = useState<z.infer<typeof schema>>({

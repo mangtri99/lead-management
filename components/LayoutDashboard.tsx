@@ -51,7 +51,7 @@ export default function LayoutDashboard({
           {/* Profile */}
           <div className="flex items-center">
             <DropdownMenu>
-              <DropdownMenuTrigger className="focus:outline-none">
+              <DropdownMenuTrigger className="focus:outline-none hover:cursor-pointer">
                 <Avatar>
                   <AvatarImage
                     src="`https://ui-avatars.com/api/?rounded=true&background=F5F5F5&name=${A+D}&size=32`"
@@ -61,7 +61,7 @@ export default function LayoutDashboard({
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuLabel onClick={() => router.push("/login")}>
+                <DropdownMenuLabel className="hover:cursor-pointer hover:bg-secondary" onClick={() => router.push("/login")}>
                   Logout
                 </DropdownMenuLabel>
               </DropdownMenuContent>

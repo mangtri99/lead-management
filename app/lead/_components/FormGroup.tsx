@@ -27,6 +27,7 @@ import { Label } from "@/components/ui/label";
 import useFormLead from "../_states/form";
 import { useParams, useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import Required from "@/components/ui/required";
 
 async function getOptions(params?: string): Promise<any> {
   const { data: branch } = await http("/branch");
@@ -146,7 +147,7 @@ export default function FormGroup() {
                 name="branch_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Branch Office </FormLabel>
+                    <FormLabel>Branch Office <Required/> </FormLabel>
                     <Select
                       onValueChange={(val) => field.onChange(Number(val))}
                       defaultValue={
@@ -178,11 +179,11 @@ export default function FormGroup() {
                 name="fullname"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>Full Name <Required/> </FormLabel>
                     <FormControl>
                       <Input
                         type="text"
-                        placeholder="Type your email here"
+                        placeholder="e.g Mang Tri"
                         {...field}
                         value={field.value ? String(field.value) : undefined}
                       />
@@ -198,7 +199,7 @@ export default function FormGroup() {
                 name="company_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Name</FormLabel>
+                    <FormLabel>Company Name <Required/> </FormLabel>
                     <FormControl>
                       <Input
                         type="text"
@@ -217,7 +218,7 @@ export default function FormGroup() {
                 name="address"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Address</FormLabel>
+                    <FormLabel>Address <Required/></FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="e.g Jl Raya Kerobokan"
@@ -236,7 +237,7 @@ export default function FormGroup() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Email <Required/></FormLabel>
                     <FormControl>
                       <Input
                         type="email"
@@ -255,7 +256,7 @@ export default function FormGroup() {
                 name="phone_number"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>Phone Number <Required/></FormLabel>
                     <FormControl>
                       <Input
                         type="tel"
@@ -269,7 +270,7 @@ export default function FormGroup() {
               />
 
               <div className="space-y-2">
-                <Label htmlFor="date">Latitude & Longitude</Label>
+                <Label htmlFor="date">Latitude & Longitude <Required/></Label>
                 <div className="flex items-center gap-x-4">
                   {/* Latitude */}
                   <div className="w-full lg:w-1/2">
@@ -312,6 +313,26 @@ export default function FormGroup() {
                   </div>
                 </div>
               </div>
+
+              {/* Address */}
+              <FormField
+                control={form.control}
+                name="notes"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Notes </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Write your notes here"
+                        className="resize-none"
+                        {...field}
+                        value={field.value ? String(field.value) : undefined}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
           </div>
         </Card>
@@ -329,7 +350,7 @@ export default function FormGroup() {
                 name="status_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Status</FormLabel>
+                    <FormLabel>Status <Required/> </FormLabel>
                     <Select
                       onValueChange={(val) => field.onChange(Number(val))}
                       defaultValue={
@@ -361,7 +382,7 @@ export default function FormGroup() {
                 name="probability_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Probability</FormLabel>
+                    <FormLabel>Probability <Required/></FormLabel>
                     <Select
                       onValueChange={(val) => field.onChange(Number(val))}
                       defaultValue={
@@ -393,7 +414,7 @@ export default function FormGroup() {
                 name="type_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Lead Type</FormLabel>
+                    <FormLabel>Lead Type <Required/></FormLabel>
                     <Select
                       onValueChange={(val) => field.onChange(Number(val))}
                       defaultValue={
@@ -425,7 +446,7 @@ export default function FormGroup() {
                 name="channel_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Lead Channel</FormLabel>
+                    <FormLabel>Lead Channel <Required/></FormLabel>
                     <Select
                       onValueChange={(val) => {
                         field.onChange(Number(val));

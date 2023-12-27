@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -33,7 +34,9 @@ function Sidebar(props: SidebarProps) {
       {!collapsed && (
         <div className="flex flex-col items-center h-full bg-white border-r w-full">
           <div className="flex flex-col items-center py-4">
-            <Image src="/img/logo.svg" alt="logo" width={200} height={100} />
+            <Link href='/'>
+              <Image src="/img/logo.svg" alt="logo" width={200} height={100} />
+            </Link>
           </div>
           <div className="flex flex-col w-full px-4 mt-8">
             <h2 className="mb-4 text-lg font-semibold tracking-tight">

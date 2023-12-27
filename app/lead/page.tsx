@@ -32,7 +32,6 @@ async function getData(
 export default async function Page(ctx: any) {
   // convert object to string
   const params = new URLSearchParams(ctx.searchParams).toString();
-  console.log(ctx);
 
   const data = await getData(params);
 

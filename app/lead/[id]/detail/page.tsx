@@ -67,15 +67,15 @@ export default async function Page({ params }: { params: any }) {
             </div>
             <div>
               <p className="font-medium">Lead Type</p>
-              <p className="text-sm">{data.type?.name}</p>
+              <p className="text-sm">{data.type?.name ?? '-'}</p>
             </div>
             <div>
               <p className="font-medium">Lead Channel</p>
-              <p className="text-sm">{data.channel?.name}</p>
+              <p className="text-sm">{data.channel?.name ?? '-'}</p>
             </div>
             <div>
               <p className="font-medium">Notes</p>
-              <p className="text-sm">{data.notes}</p>
+              <p className="text-sm">{data.notes ?? '-'}</p>
             </div>
           </div>
         </div>
