@@ -19,7 +19,9 @@ Access application http://localhost:3000/
 List of available pages:
 
 Login : `/login`
+
 Dashboard: `/`
+
 Lead Management: `/lead/*`
 
 Note: You may need to define your base url API, please change .env on key `NEXT_PUBLIC_API_BASE_URL`
