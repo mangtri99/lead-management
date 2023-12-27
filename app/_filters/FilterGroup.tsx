@@ -12,7 +12,7 @@ export default function FilterGroup() {
     <div className="flex items-end space-x-4">
       {/* Date */}
       <div className="lg:w-[230px] w-full">
-        <Label htmlFor="date">Date</Label>
+        <Label htmlFor="date">Filter data by Date</Label>
         <DatePickerWithRange
           id="date"
           date={filter.date}
